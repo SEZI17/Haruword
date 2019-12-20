@@ -3,11 +3,11 @@
 <span class="modal_close" onclick="closeModal()">&times;</span>
 <h1 id="modalHeader">로그인</h1>
 <div id="modal_id">
-    <input type="text" placeholder="아이디" class="modal_inputBox" onkeydown="clearError(this.id)" id="idInput">
+    <input type="text" name="userId" placeholder="아이디" class="modal_inputBox" onkeydown="clearError(this.id)" id="idInput">
     <p id="idInputError"></p>
 </div>
 <div id="modal_password">
-    <input type="password" placeholder="비밀번호" class="modal_inputBox" onkeydown="clearError(this.id)" id="passwordInput">
+    <input type="password" name="pwd" placeholder="비밀번호" class="modal_inputBox" onkeydown="clearError(this.id)" id="passwordInput">
     <p id="passwordInputError"></p>
 </div>
 <p><a href="#" style="color:darkblue" class="redirectModal" id="forgotIDBtn2">아이디 찾기</a> · <a href="#"
