@@ -25,7 +25,7 @@
     <header>
         <div id="haru_header_upper" class="header_upper_index">
             <div id="haru_header_upper_wrap">
-                <a href="./index.jsp"><title id="haru_title">하루, 단어</title></a>
+                <a href="./index.jsp"><title id="haru_title">하루, 단어!</title></a>
                 <div id="haru_mobile_sidemenu_toggle" class="haru_mobile"><img class="sidemenuon" src="/Haruword/img/sidemenuon.png" alt="사이드메뉴 보이기"><img class="sidemenuoff" src="/Haruword/img/sidemenuoff.png" alt="사이드메뉴 숨기기"></div>
             </div>
         </div>
