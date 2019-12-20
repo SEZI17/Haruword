@@ -318,10 +318,16 @@ function signupConfirm() {
     if (firstError == true) {
         alert("회원가입을 축하합니다.");
         modal.style.display = "block";
-        location.href='MemberServlet?command=member_add'
     }
+    return firstError;
 }
-
+function valuemove() {
+	document.frm.name.value = document.getElementById("nameInput").value;
+	document.frm.email.value = document.getElementById("emailInput").value;
+	document.frm.userId.value = document.getElementById("idInput").value;
+	document.frm.nickname.value = document.getElementById("nicknameInput").value;
+	document.frm.pwd.value = document.getElementById("passwordInput").value;	
+}
 //terms button
 function termsConfirm() {
     if (document.getElementById("termsOfService").checked == false) {

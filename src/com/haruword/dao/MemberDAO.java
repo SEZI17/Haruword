@@ -20,7 +20,7 @@ public class MemberDAO {
 
 	public void insertMember(String name, String userId, String email, String pwd, String nickname) {
 		// TODO Auto-generated method stub
-		String sql = "insert into product values(?,?,?,?,?)";
+		String sql = "insert into haru_member values(?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		System.out.println(name+userId+email+pwd+nickname+"---------------");
@@ -32,7 +32,7 @@ public class MemberDAO {
 			pstmt.setString(3, nickname);
 			pstmt.setString(4, email);
 			pstmt.setString(5, pwd);
-			//pstmt.setInt(6, 0);
+			pstmt.setInt(6, 0);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
