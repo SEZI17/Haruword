@@ -23,6 +23,7 @@ public class MemberDAO {
 		String sql = "insert into product values(?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		System.out.println(name+userId+email+pwd+nickname+"---------------");
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -30,8 +31,8 @@ public class MemberDAO {
 			pstmt.setString(2, userId);
 			pstmt.setString(3, nickname);
 			pstmt.setString(4, email);
-			pstmt.setString(4, pwd);
-			//pstmt.setInt(4, 0);
+			pstmt.setString(5, pwd);
+			//pstmt.setInt(6, 0);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
