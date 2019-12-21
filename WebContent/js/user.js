@@ -133,20 +133,19 @@ function idExist() {
     var idValid = isValid(id.value, true, true, true, false, false, false) && lengthBetween(id.value, 4, 10);
 
     if (!idValid) {
-        idError.innerHTML = "아이디는 영어와 숫자만을 혼용하여 공백없이 4~10자로 입력해주세요.";
         if (firstError) {
             firstError = false;
         }
     }
     if (id.value.length == 0) {
-        idError.innerHTML = "아이디를 입력해 주세요";
         if (firstError) {
             firstError = false;
         }
     }
     
     if (firstError == true) {
-//        location.href='MemberServlet?command=member_checkID'
+    	var url = "MemberServlet?command=member_checkID&userId="+id.value;
+    	window.open(url,"idcheck","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
     }
 }
 
@@ -158,23 +157,20 @@ function nickExist() {
     var nicknameValid = isValid(nickname.value, true, true, true, false, true, false) && lengthBetween(nickname.value, 2, 10);
     
     if (!nicknameValid) {
-        nicknameError.innerHTML = "닉네임은 특수문자와 공백을 제외한 2~10글자로 입력해주세요.";
         if (firstError) {
-            nickname.focus();
             firstError = false;
         }
     }
     
     if (nickname.value.length == 0) {
-        nicknameError.innerHTML = "닉네임을 입력해 주세요";
         if (firstError) {
-            nickname.focus();
             firstError = false;
         }
     }
     
     if (firstError == true) {
-//        location.href='MemberServlet?command=member_checkPWD'
+    	var url = "MemberServlet?command=member_checkNN&nickname="+nickname.value;
+    	window.open(url,"idcheck","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
     }
 }
 
@@ -234,7 +230,6 @@ function editInfoConfirm() {
     //confirm
     if (firstError == true) {
         alert("회원정보 변경이 완료되었습니다.");
-        location.href='MemberServlet?command=member_add';
     }
 }
 
@@ -254,8 +249,63 @@ function signupConfirm() {
     }
     if (name.value.length == 0) {
         nameError.innerHTML = "이름을 입력해 주세요."
-        if (firstError) {656
+        if (firstError) {
             name.focus();
+            firstError = false;
+        }
+    }
+    
+    //check id
+    var id = document.getElementById("idInput");
+    var chkid = document.getElementById("chkId");
+    var idError = document.getElementById("idInputError");
+    var idValid = isValid(id.value, true, true, true, false, false, false) && lengthBetween(id.value, 4, 10);
+    
+    if (!idValid) {
+        idError.innerHTML = "아이디는 영어와 숫자만을 혼용하여 공백없이 4~10자로 입력해주세요.";
+        if (firstError) {
+        	id.focus();
+            firstError = false;
+        }
+    }
+    if (id.value.length == 0) {
+        idError.innerHTML = "아이디를 입력해 주세요";
+        if (firstError) {
+        	id.focus();
+            firstError = false;
+        }
+    }    
+    if (id.value != chkid.value) {
+        if (firstError) {
+        	id.focus();        	
+            firstError = false;
+        }
+    }
+    
+    //check nickname
+    var nickname = document.getElementById("nicknameInput");
+    var chknick = document.getElementById("chkNick");
+    var nicknameError = document.getElementById("nicknameInputError");
+    var nicknameValid = isValid(nickname.value, true, true, true, false, true, false) && lengthBetween(nickname.value, 2, 10);
+    
+    if (!nicknameValid) {
+        nicknameError.innerHTML = "닉네임은 특수문자와 공백을 제외한 2~10글자로 입력해주세요.";
+        if (firstError) {
+            nickname.focus();
+            firstError = false;
+        }
+    }    
+    if (nickname.value.length == 0) {
+        nicknameError.innerHTML = "닉네임을 입력해 주세요";
+        if (firstError) {
+            nickname.focus();
+            firstError = false;
+        }
+    }
+    
+    if (nickname.value != chknick.value) {
+        if (firstError) {
+        	nickname.focus();
             firstError = false;
         }
     }
@@ -319,15 +369,10 @@ function signupConfirm() {
         alert("회원가입을 축하합니다.");
         modal.style.display = "block";
     }
+    
     return firstError;
 }
-function valuemove() {
-	document.frm.name.value = document.getElementById("nameInput").value;
-	document.frm.email.value = document.getElementById("emailInput").value;
-	document.frm.userId.value = document.getElementById("idInput").value;
-	document.frm.nickname.value = document.getElementById("nicknameInput").value;
-	document.frm.pwd.value = document.getElementById("passwordInput").value;	
-}
+
 //terms button
 function termsConfirm() {
     if (document.getElementById("termsOfService").checked == false) {
@@ -368,22 +413,9 @@ function loginConfirm(){
             firstError = false;
         }
     }
-    //check if id and password are valid
-    var idList = ["admin", "user"]
-    var pwList = ["adminpassword","userpassword"]
-    var loginConfirm=false;
-    
-    if(idList.includes(id.value)&&pwList.includes(password.value)){
-        if(idList.indexOf(id.value)==pwList.indexOf(password.value)){
-            loginConfirm=true;
-        };
-    };
     //confirm
-    if (firstError == true && loginConfirm) {
-        window.location.href = "/Haruword/index.jsp";
-    }
-    else if(firstError == true){
-        alert("가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
+    if (firstError == true) {
+    	modal.style.display = "block";
     }
 }
 

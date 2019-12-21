@@ -5,7 +5,7 @@
 <form method="post" action="MemberServlet?command=member_add">
 	<div id="modal_name">
 		이름 <input type="text" placeholder="이름 (2~5글자 한글)" name="name"
-			class="modal_inputBox" onkeydown="clearError(this.id)" onfocusout="valuemove()" id="nameInput">
+			class="modal_inputBox" onkeydown="clearError(this.id)" id="nameInput">
 		<p id="nameInputError"></p>
 	</div>
 	<div id="modal_id">
@@ -14,21 +14,23 @@
 			onkeydown="clearError(this.id)" id="idInput">
 		<p id="idInputError"></p>
 	</div>
+	<input type="text" name="checkedId" id="chkId">
 	<div id="modal_nickname">
 		별명<input type="text" placeholder="별명 (2~10글자, 특수문자 제외)"
-			name="nickname" class="modal_inputBox" onfocusout="valuemove()" 
+			name="nickname" class="modal_inputBox" onfocusout="nickExist()"
 			onkeydown="clearError(this.id)" id="nicknameInput">
 		<p id="nicknameInputError"></p>
 	</div>
+	<input type="hidden" name="checkedNickname" id="chkNick">
 	<div id="modal_email">
 		이메일 주소<input type="email" placeholder="이메일 주소" name="email"
-			class="modal_inputBox" onkeydown="clearError(this.id)" onfocusout="valuemove()"
+			class="modal_inputBox" onkeydown="clearError(this.id)"
 			id="emailInput">
 		<p id="emailInputError"></p>
 	</div>
 	<div id="modal_password">
 		비밀번호<input type="password" placeholder="비밀번호 (8자리 이상)" name="pwd"
-			class="modal_inputBox" onkeydown="clearError(this.id)" onfocusout="valuemove()"
+			class="modal_inputBox" onkeydown="clearError(this.id)"
 			id="passwordInput">
 		<p id="passwordInputError"></p>
 	</div>

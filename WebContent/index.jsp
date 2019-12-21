@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,12 +43,19 @@
                 </nav>                
                 <!-- //GNB -->
                 <!-- Signinupbutton -->
-                <div id="haru_signup">
-                    <ul>
-                        <li class="sign"><a href="#" class="openModal" id="loginBtn0">로그인</a></li>
-                        <li class="sign"><a href="#" class="bar openModal" id="termsBtn0">회원가입</a></li>
-                    </ul>
-                </div>
+                <c:choose>
+                	<c:when test="${result==true}">	                
+	           			<div id="haru_signup">안녕하세요. ${loginUser.name}회원님.</div>
+	                </c:when>
+	                <c:otherwise>
+		           		<div id="haru_signup">
+		                    <ul>
+		                        <li class="sign"><a href="#" class="openModal" id="loginBtn0">로그인</a></li>
+		                        <li class="sign"><a href="#" class="bar openModal" id="termsBtn0">회원가입</a></li>
+		                    </ul>
+		                </div>
+	           		</c:otherwise>
+	           	</c:choose>
                 <!-- //Signinupbutton -->
             </div>            
         </div>           
