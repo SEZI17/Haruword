@@ -14,7 +14,7 @@
 			onkeydown="clearError(this.id)" id="idInput">
 		<p id="idInputError"></p>
 	</div>
-	<input type="text" name="checkedId" id="chkId">
+	<input type="hidden" name="checkedId" id="chkId">
 	<div id="modal_nickname">
 		별명<input type="text" placeholder="별명 (2~10글자, 특수문자 제외)"
 			name="nickname" class="modal_inputBox" onfocusout="nickExist()"
