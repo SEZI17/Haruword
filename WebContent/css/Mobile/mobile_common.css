@@ -106,6 +106,15 @@
         padding: 0 22px;
     }
 
+	.memint {
+		margin: 0 auto;
+		margin-top:10px;
+		width:256px;
+		height: 80px;
+		font-size: 20px!important;
+		line-height:30px;
+	}
+
     #haru_sidemenu ul {
         text-align: center;
     }
@@ -437,6 +446,14 @@
         height: 50px;
         line-height: 50px;
     }
+    
+    /*회원*/
+    #haru_MEM_wrap {
+	position:relative;
+	width: 100%;
+	margin:0 auto;
+	}
+    
     .dropdown > ul > li:hover > a {
         font-weight: bold;
         color: white;

@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <span class="modal_close" onclick="closeModal()">&times;</span>
 <h1 id="modalHeader">로그인</h1>
-<form method="post" action="/Haruword/MemberServlet?command=member_login">
+<form method="post" action="/Haruword/MemberServlet?command=member_login" target="login" onsubmit="loginCheck();">
+	<div>
+	    <input type="hidden" class="modal_inputBox">
+	    <p id="loginError"></p>
+	</div>
 	<div id="modal_id">
 	    <input type="text" name="userId" placeholder="아이디" class="modal_inputBox" name="id" onkeydown="clearError(this.id)" id="idInput">
 	    <p id="idInputError"></p>
@@ -18,7 +22,7 @@
 </form>
 <br>
 <hr><br>
-<p style="text-align: center">하루 단어 아이디가 없으신가요? &nbsp<a href="#" style="color:darkblue" class="redirectModal" id="termsBtn2">회원가입</a></p>
+<p style="text-align: center">하루 단어 아이디가 없으신가요? &nbsp;<a href="#" style="color:darkblue" class="redirectModal" id="termsBtn2">회원가입</a></p>
 <script>
     //redirect modal
     $(".redirectModal").click(function () {

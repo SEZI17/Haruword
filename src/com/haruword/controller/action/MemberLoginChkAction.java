@@ -6,27 +6,27 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.haruword.dao.MemberDAO;
+import com.haruword.dto.MemberVO;
 
-
-public class MemberLoginAction implements Action {
+public class MemberLoginChkAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "/page/MEM/loginChk.jsp";
 		String userId = request.getParameter("userId");
-		String pwd = request.getParameter("pwd");
-		System.out.println(userId);
-		MemberDAO memberDAO = MemberDAO.getInstance();		
-		boolean result = memberDAO.getUserInfo(userId,pwd);
-		System.out.println(result);
-		request.setAttribute("result", result);
-		request.setAttribute("userId", userId);
+		String result = request.getParameter("result");
+		String url = "index.jsp";
+		MemberDAO memberDAO = MemberDAO.getInstance();	
+		MemberVO member = memberDAO.selectOneMemberById(userId);
+		request.setAttribute("member", member);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginUser",member);
+		session.setAttribute("result",result);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request,response);	
-
+		dispatcher.forward(request, response);
 	}
 
 }

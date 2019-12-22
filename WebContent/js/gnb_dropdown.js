@@ -52,6 +52,32 @@ $(function(){
         $('#haru_INF').css({"background":"#AF8672","transition-duration":"0.3s"});
         $('#haru_INF_dropdown').stop().slideUp();
     });
+    
+    $('#haru_MEM').mouseenter(function(){    	
+        $('#haru_MEM').css({"background":"#444", "transition-duration":"0.3s"});
+        $('#haru_MEM').css({"background-image":"url(/Haruword/img/orange.png)","background-size":"32px",
+            "background-repeat":"no-repeat","background-position":"center"});
+        $('#haru_MEM_dropdown').stop().slideDown();
+    });
+    $('.dropMEM a').mouseenter(function(){
+        $('#haru_MEM').css({"background":"#666"});
+        $('#haru_MEM').css({"background-image":"url(/Haruword/img/orange.png)","background-size":"32px",
+            "background-repeat":"no-repeat","background-position":"center"});
+        $('#haru_MEM_dropdown').stop().slideDown();
+    });
+    $('.dropMEM').mouseout(function(){
+        $('#haru_MEM').css({"background":"initial","transition-duration":"0.3s"});
+        $('#haru_MEM').css({"background-image":"url(/Haruword/img/orange.png)","background-size":"32px",
+            "background-repeat":"no-repeat","background-position":"center"});
+        $('#haru_MEM_dropdown').stop().slideUp();
+    });
+    $('#haru_MEM').mouseout(function(){
+        $('#haru_MEM').css({"background":"initial","transition-duration":"0.3s"});
+        $('#haru_MEM').css({"background-image":"url(/Haruword/img/orange.png)","background-size":"32px",
+            "background-repeat":"no-repeat","background-position":"center"});
+        $('#haru_MEM_dropdown').stop().slideUp();
+    });
+    
     $(".sidemenuon").click(function () {
         // $('#haru_header_upper').css({"background-image":"url(../../img/sidemenu.png)","transition-duration":"1s"});
         // $('#haru_title').css({"color":"white","transition-duration":"0.4s"});

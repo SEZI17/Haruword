@@ -415,8 +415,15 @@ function loginConfirm(){
     }
     //confirm
     if (firstError == true) {
-    	modal.style.display = "block";
+    	var url = "MemberServlet?command=member_login&id="+id.value;
+    	window.open(url,"login","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
     }
+}
+
+// login new window
+function loginCheck() {
+	var url = ".";
+	window.open(url,"login","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
 //find id button

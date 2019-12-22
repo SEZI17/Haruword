@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- haru header -->
     <header>
         <div id="haru_header_upper">
@@ -21,14 +22,19 @@
                 </nav>                
                 <!-- //GNB -->
                 <!-- Signinupbutton -->
-                <div id="haru_signup">
-                    <ul>
-                        <li class="sign"><a href="#" class="openModal" id="loginBtn0">로그인</a></li>
-                        <li class="sign"><a href="#" class="openModal" id="forgotIDBtn0" style="display: none;">아이디찾기</a></li>
-                        <li class="sign"><a href="#" class="openModal" id="forgotPWBtn0" style="display: none;">비밀번호찾기</a></li>
-                        <li class="sign"><a href="#" class="bar openModal" id="termsBtn0">회원가입</a></li>
-                    </ul>
-                </div>
+                <c:choose>
+                	<c:when test="${result==true}">	                
+	           			<div id="haru_MEM">${loginUser.name}(${loginUser.nickname})</div>
+	                </c:when>
+	                <c:otherwise>
+		           		<div id="haru_signup">
+		                    <ul>
+		                        <li class="sign"><a href="#" class="openModal" id="loginBtn0">로그인</a></li>
+		                        <li class="sign"><a href="#" class="bar openModal" id="termsBtn0">회원가입</a></li>
+		                    </ul>
+		                </div>
+	           		</c:otherwise>
+	           	</c:choose>
                 <!-- //Signinupbutton -->
             </div>            
         </div>           
@@ -77,6 +83,19 @@
             <p class="menu_description_contents">제작자 및 관리자를 소개합니다.</p>
         </div>
     </div>
+    <c:if test="${result==true}">
+    <div id="haru_MEM_wrap">                
+	<div id="haru_MEM_dropdown" class="haru_pc dropdown2">
+        <ul class="dropMEM">
+            <li><a href="/Haruword/MemberServlet?command=member_logout">로그아웃</a></li>
+        </ul>
+        <div class="menu_description">
+            <p class="menu_description_subject2">접속 ID</p>
+            <p class="menu_description_contents">${loginUser.userid}</p>
+        </div>
+    </div>
+    </div>
+	</c:if>    
     <!-- //Dropdown Menu -->
     <!-- Mobile side Menu -->
     <div id="haru_sidemenu" class="sidemenu haru_mobile">
@@ -84,14 +103,25 @@
                 <div id="haru_mobile_sidemenu_toggle_sdm" class="haru_mobile"><img class="sidemenuoff" src="../../img/sidemenuoff.png"></div>
             </div>
         <!-- <div id="haru_sidemenu_list"> -->
-            <div id="haru_signup_mobile">
-                <ul class="signup_wrap">
-                    <li class="sign"><a href="#" class="openModal" id="loginBtn0">로그인</a></li>
-                    <li class="sign"><a href="#" class="openModal" id="forgotIDBtn0" style="display: none;">아이디찾기</a></li>
-                    <li class="sign"><a href="#" class="openModal" id="forgotPWBtn0" style="display: none;">비밀번호찾기</a></li>
-                    <li class="sign"><a href="#" class="bar openModal" id="termsBtn0">회원가입</a></li>
-                </ul>
-            </div>
+            <c:choose>
+                <c:when test="${result==true}">	                
+		           	<div id="haru_signup_mobile">
+		                <ul class="signup_wrap">
+		                    <li class="sign"><a class="memint" href="#">안녕하세요.<br>${loginUser.name}(${loginUser.nickname})님.</a></li>
+		                </ul>
+	            	</div>
+	            </c:when>
+	            <c:otherwise>		        
+	            	<div id="haru_signup_mobile">
+		                <ul class="signup_wrap">
+		                    <li class="sign"><a href="#" class="openModal" id="loginBtn0">로그인</a></li>
+		                    <li class="sign"><a href="#" class="openModal" id="forgotIDBtn0" style="display: none;">아이디찾기</a></li>
+		                    <li class="sign"><a href="#" class="openModal" id="forgotPWBtn0" style="display: none;">비밀번호찾기</a></li>
+		                    <li class="sign"><a href="#" class="bar openModal" id="termsBtn0">회원가입</a></li>
+		                </ul>
+	            	</div>
+	           	</c:otherwise>
+	        </c:choose>
             <ul class="sideLRN">
                 <li><a href="#" class="sidelist_subject">외우자</a></li>
                 <li><a href="../LRN/hrd.jsp" class="sidelist_list">하루단어</a></li>
@@ -115,6 +145,12 @@
                 <li><a href="../INF/aboutus.jsp" class="sidelist_list">소개</a></li>
                 <li><a href="../INF/FAQ.jsp" class="sidelist_list">FAQ</a></li>
             </ul>
+            <c:if test="${result==true}">
+            <ul class="sideMEM">
+                <li><a href="#" class="sidelist_subject">접속ID : ${loginUser.userid}</a></li>
+                <li><a href="/Haruword/MemberServlet?command=member_logout" class="sidelist_list">로그아웃</a></li>
+            </ul>
+            </c:if>
         <!-- </div> -->
     </div>
     <!-- //Mobile side Menu -->

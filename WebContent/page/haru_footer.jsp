@@ -6,11 +6,11 @@
             <!-- FNB -->
             <nav id="haru_fnb">
                 <ul>
-                    <li><a href="/page/INF/aboutus.jsp">페이지소개</a></li>
+                    <li><a href="/Haruword/page/INF/aboutus.jsp">페이지소개</a></li>
                     <li class="haru_pc"><a href="/page/INF/FAQ.jsp">FAQ</a></li>
-                    <li><a href="/page/MYP/privacyPolicy.jsp" class="laws">개인정보처리방침</a></li>
+                    <li><a href="/Haruword/page/MYP/privacyPolicy.jsp" class="laws">개인정보처리방침</a></li>
                     <li class="sign"><a href="#" class="openModal" id="forgotIDBtn2" style="display:none">ID/PW 찾기</a></li>
-                    <li><a href="/page/MYP/deleteAccount.jsp">회원탈퇴</a></li>
+                    <li><a href="/Haruword/page/MYP/deleteAccount.jsp">회원탈퇴</a></li>
                 </ul>
             </nav>
             <!-- //FNB -->

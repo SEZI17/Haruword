@@ -116,6 +116,50 @@ footer a { color: white; }
     font-weight: bold;
     color: white;
 }
+
+/*회원*/
+#haru_MEM_wrap {
+	position:relative;
+	width: 960px;
+	margin:0 auto
+}
+.dropdown2 {
+    position: absolute;
+    top: 0px;
+    width: 180px;
+    height: 90px;
+    right: 20px;
+	max-width: 960px;
+    background-color: #333;
+    opacity: 0.9;
+    display: none;
+    z-index: 99;
+}
+
+.dropdown2 > ul { overflow: hidden; }
+.dropdown2 > ul > li { float: left; }
+.dropdown2 > ul > li > a {
+    opacity: 1;
+    color: #AAA;
+    display: block;
+    padding: 0 25px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+}
+.dropdown2 > ul > li:hover > a {
+    font-weight: bold;
+    color: white;
+}
+.menu_description_subject2 {
+    margin-left: 20px;
+    margin-right: 12px;
+    color: white;
+    font-weight: bold;
+}
+/*!회원*/
+
+
 .aboutus {
     margin-left: 320px;
 }
@@ -129,6 +173,22 @@ footer a { color: white; }
     margin-top: 10px;
     right: 20px;
     border: 1px solid black;
+}
+
+#haru_header_bottom_wrap > #haru_MEM {
+	font-weight: bold;
+	width: 180px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+    position: absolute;
+    right: 20px;
+    font-size: 14px;
+    color: white;
+    background-image: url(../../img/orange.png);
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #haru_signup > ul { overflow: hidden; }

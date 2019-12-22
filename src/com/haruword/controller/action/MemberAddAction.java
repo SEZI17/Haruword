@@ -1,6 +1,7 @@
 package com.haruword.controller.action;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,9 @@ public class MemberAddAction implements Action {
 		String pwd = request.getParameter("pwd");
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		memberDAO.insertMember(name, userId, email, pwd, nickname);
+		
+		String url = "/Haruword/index.jsp";
+		response.sendRedirect(url);
 
 	}
 
