@@ -63,11 +63,23 @@
         </div>
     </div>
     <div id="haru_MYP_dropdown" class="haru_pc dropdown">
-        <ul class="dropMYP">
-            <li><a href="../MYP/wrongAnswerNotes.jsp" class="wan">오답노트</a></li>
-            <li><a href="../MYP/mynote.jsp">내 단어장</a></li>
-            <li><a href="../MYP/editInfo_checkPW.jsp">회원정보변경</a></li>
-        </ul>
+    	<c:choose>
+                <c:when test="${result==true}">	                
+	           		<ul class="dropMYP">
+            			<li><a href="../MYP/wrongAnswerNotes.jsp" class="wan">오답노트</a></li>
+            			<li><a href="../MYP/mynote.jsp">내 단어장</a></li>
+            			<li><a href="../MYP/editInfo_checkPW.jsp">회원정보변경</a></li>
+        			</ul>
+	            </c:when>
+	            <c:otherwise>
+		           	<ul class="dropMYP">
+                		<li><a href="#" class="openModal" id="loginBtn0">My 페이지</a></li>
+                		<li><a href="#" class="openModal" id="loginBtn0">오답노트</a></li>
+                		<li><a href="#" class="openModal" id="loginBtn0">내 단어장</a></li>
+                		<li><a href="#" class="openModal" id="loginBtn0">회원정보변경</a></li>
+            		</ul>
+	            </c:otherwise>
+	    </c:choose>        
         <div class="menu_description">
             <p class="menu_description_subject">My 페이지</p>
             <p class="menu_description_contents">학습하면서 틀린 단어, 어려웠던 단어 등을 조회합니다.</p>
@@ -134,12 +146,25 @@
                 <li><a href="../COM/tip.jsp" class="sidelist_list">TIP 게시판</a></li>
                 <li><a href="../COM/stats.jsp" class="sidelist_list">단어통계</a></li>
             </ul>
-            <ul class="sideMYP">
-                <li><a href="#" class="sidelist_subject">My 페이지</a></li>
-                <li><a href="../MYP/wrongAnswerNotes.jsp" class="sidelist_list">오답노트</a></li>
-                <li><a href="../MYP/mynote.jsp" class="sidelist_list">내 단어장</a></li>
-                <li><a href="../MYP/editInfo_checkPW.jsp" class="sidelist_list">회원정보변경</a></li>
-            </ul>
+            <c:choose>
+                <c:when test="${result==true}">	                
+	           		<ul class="sideMYP">
+                		<li><a href="#" class="sidelist_subject">My 페이지</a></li>
+                		<li><a href="../MYP/wrongAnswerNotes.jsp" class="sidelist_list">오답노트</a></li>
+                		<li><a href="../MYP/mynote.jsp" class="sidelist_list">내 단어장</a></li>
+                		<li><a href="../MYP/editInfo_checkPW.jsp" class="sidelist_list">회원정보변경</a></li>
+            		</ul>
+	            </c:when>
+	            <c:otherwise>
+		           	<ul class="sideMYP">
+                		<li><a href="#" class="openModal sidelist_subject" id="loginBtn0">My 페이지</a></li>
+                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0">오답노트</a></li>
+                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0">내 단어장</a></li>
+                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0">회원정보변경</a></li>
+            		</ul>
+	            </c:otherwise>
+	        </c:choose>
+            
             <ul class="sideINF">
                 <li><a href="#" class="sidelist_subject">페이지 소개</a></li>
                 <li><a href="../INF/aboutus.jsp" class="sidelist_list">소개</a></li>

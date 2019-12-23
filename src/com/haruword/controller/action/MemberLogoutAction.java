@@ -13,13 +13,12 @@ public class MemberLogoutAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "/index.jsp";
+		String url = "/Haruword/index.jsp";
 		
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 
 	}
 

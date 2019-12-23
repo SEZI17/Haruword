@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.haruword.dao.MemberDAO;
+import com.haruword.dto.MemberVO;
 
 public class MemberAddAction implements Action {
 
@@ -18,8 +19,16 @@ public class MemberAddAction implements Action {
 		String nickname = request.getParameter("nickname");
 		String userId = request.getParameter("userId");
 		String pwd = request.getParameter("pwd");
+		
+		MemberVO member = new MemberVO();
+		member.setName(name);
+		member.setEmail(email);
+		member.setNickname(nickname);
+		member.setUserid(userId);
+		member.setPwd(pwd);
+		
 		MemberDAO memberDAO = MemberDAO.getInstance();
-		memberDAO.insertMember(name, userId, email, pwd, nickname);
+		memberDAO.insertMember(member);
 		
 		String url = "/Haruword/index.jsp";
 		response.sendRedirect(url);
