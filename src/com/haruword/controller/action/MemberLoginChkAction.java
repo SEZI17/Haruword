@@ -25,8 +25,9 @@ public class MemberLoginChkAction implements Action {
 		HttpSession session = request.getSession();
 		session.setAttribute("loginUser",member);
 		session.setAttribute("result",result);
-		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+//		dispatcher.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }
