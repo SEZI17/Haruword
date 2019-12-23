@@ -303,7 +303,16 @@
         font-size: 30px;
         padding: 0 22px;
     }
-
+	
+	.memint {
+		margin: 0 auto;
+		margin-top:10px;
+		width:256px;
+		height: 80px;
+		font-size: 20px!important;
+		line-height:30px;
+	}
+	
     #haru_sidemenu ul {
         text-align: center;
     }

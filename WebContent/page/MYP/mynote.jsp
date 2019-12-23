@@ -31,7 +31,7 @@
         <h1 class="haru_pc">My 페이지</h1>       
         <p class="haru_pc">학습하면서 틀린 단어, 어려웠던 단어 등을 조회하고,<br>회원정보를 변경하실 수 있습니다.</p>
         </div>
-        <h1 class="haru_mobile"><span id="member_name_mobile"></span>님의 단어장</h1>
+        <h1 class="haru_mobile">${loginUser.name}님의 단어장</h1>
     </div>
     <div id="haru_contents_wrap">
         <aside id="haru_aside" class="haru_pc">
@@ -41,7 +41,7 @@
         </aside>
         <section id="haru_subcontents">
             <header id="haru_subheader" class="haru_pc">
-                <div id="haru_subtitle"><span id="member_name"></span>님의 단어장</div>
+                <div id="haru_subtitle">${loginUser.name}님의 단어장</div>
                 <div id="haru_cat">
                     <p>HOME > My 페이지 > 내 단어장</p>
                 </div>

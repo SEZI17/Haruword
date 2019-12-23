@@ -24,13 +24,14 @@ function Mynotelistoutput() {
     add.className = "notelist_tr";  
     }
 }
-function membernameOutput() {
-    var memberlist = document.getElementById('member_name');
-    var memberlist_m = document.getElementById('member_name_mobile');
-    var name = membername[1];
-    memberlist.innerHTML = name;
-    memberlist_m.innerHTML = name;
-}
+
+//function membernameOutput() {
+//    var memberlist = document.getElementById('member_name');
+//    var memberlist_m = document.getElementById('member_name_mobile');
+//    var name = membername[1];
+//    memberlist.innerHTML = name;
+//    memberlist_m.innerHTML = name;
+//}
 
 // 단어장 리스트 전체선택
 function checkallWord() {
@@ -65,7 +66,6 @@ function listNone(){
 }
 
 $(document).ready(function(){
-    membernameOutput();
     Mynotelistoutput();
     listNone();
 });
