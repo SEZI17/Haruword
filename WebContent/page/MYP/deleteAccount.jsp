@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,20 +67,27 @@
                 </div>
             </header>                    
             <!-- SubContents Here -->
-            <div id="deleteAccount">
-                <p>* 지금까지 <b>하루, 단어</b>를 이용해주셔서 감사합니다.<br>* 보다 나은 사이트를 향해 발전하겠습니다.</p><br><br>
-                <div id="MEM_password">
-                    <span>비밀번호</span>
-                    <input type="password" placeholder="비밀번호" class="MEM_inputBox" onkeydown="clearError(this.id)" id="passwordInput">
-                    <p id="passwordInputError"></p>
-                </div>
-                <!-- bottom button -->
-                <a href="/index.jsp"><button class="MEM_cancelBtn">취소</button></a>
-                <button class="MEM_confirmBtn" onclick="deleteAccountConfirm()">탈퇴</button>
-                <br>
-                <br>
-                <br>
-            </div>                   
+            <c:choose>
+            	<c:when test="${loginUser.userid!=null}">
+		            <div id="deleteAccount">
+		                <p>* 지금까지 <b>하루, 단어</b>를 이용해주셔서 감사합니다.<br>* 보다 나은 사이트를 향해 발전하겠습니다.</p><br><br>
+		                <div id="MEM_password">
+		                    <span>비밀번호</span>
+		                    <input type="password" placeholder="비밀번호" class="MEM_inputBox" onkeydown="clearError(this.id)" id="passwordInput">
+		                    <p id="passwordInputError"></p>
+		                </div>
+		                <!-- bottom button -->
+		                <a href="/index.jsp"><button class="MEM_cancelBtn">취소</button></a>
+		                <button class="MEM_confirmBtn" onclick="deleteAccountConfirm()">탈퇴</button>
+		                <br>
+		                <br>
+		                <br>
+		            </div>
+            	</c:when>
+            	<c:otherwise>
+            		<c:redirect url="../errorPage.jsp"></c:redirect>
+            	</c:otherwise>
+            </c:choose>                   
             <!-- //SubContents Here -->
         </section>
     </div>

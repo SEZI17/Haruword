@@ -144,7 +144,7 @@ function idExist() {
     }
     
     if (firstError == true) {
-    	var url = "MemberServlet?command=member_checkID&userId="+id.value;
+    	var url = "/Haruword/MemberServlet?command=member_checkID&userId="+id.value;
     	window.open(url,"idcheck","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
     }
 }
@@ -169,7 +169,7 @@ function nickExist() {
     }
     
     if (firstError == true) {
-    	var url = "MemberServlet?command=member_checkNN&nickname="+nickname.value;
+    	var url = "/Haruword/MemberServlet?command=member_checkNN&nickname="+nickname.value;
     	window.open(url,"idcheck","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
     }
 }
@@ -179,6 +179,7 @@ function editInfoConfirm() {
     var firstError = true;
     //check nickname
     var nickname = document.getElementById("nicknameInput");
+    var chknick = document.getElementById("chkNick");
     var nicknameError = document.getElementById("nicknameInputError");
     var nicknameValid = isValid(nickname.value, true, true, true, false, true, false) && lengthBetween(nickname.value, 2, 10);
     var nicknameList = ["admin", "user"]
@@ -190,6 +191,7 @@ function editInfoConfirm() {
             firstError = false;
         }
     }
+    
     if (nickname.value.length == 0) {
         nicknameError.innerHTML = "닉네임을 입력해 주세요";
         if (firstError) {
@@ -197,6 +199,14 @@ function editInfoConfirm() {
             firstError = false;
         }
     }
+    
+    if (nickname.value != chknick.value) {
+        if (firstError) {
+        	nickname.focus();
+            firstError = false;
+        }
+    }
+    
     //check email
     var email = document.getElementById("emailInput");
     var emailError = document.getElementById("emailInputError");
@@ -208,13 +218,7 @@ function editInfoConfirm() {
             firstError = false;
         }
     }
-    if (isExist) {
-        nicknameError.innerHTML = "중복된 닉네임 입니다.";
-        if (firstError) {
-            nickname.focus();
-            firstError = false;
-        }
-    }
+    
     if (email.value.length == 0) {
         emailError.innerHTML = "이메일을 입력해 주세요";
         if (firstError) {
@@ -222,14 +226,10 @@ function editInfoConfirm() {
             firstError = false;
         }
     }
-    //no information has changed
-    if(nickname.value=="admin123" && email.value=="admin@email.com"){
-        alert("변경된 내용이 없습니다.");
-        return;
-    }
-    //confirm
+
     if (firstError == true) {
-        alert("회원정보 변경이 완료되었습니다.");
+    	alert("회원정보 변경이 완료되었습니다.");
+    	location.href="/Haruword/MemberServlet?command=member_modify&nickname="+nickname.value+"&email="+email.value;       
     }
 }
 
@@ -413,17 +413,18 @@ function loginConfirm(){
             firstError = false;
         }
     }
-    //confirm
-    if (firstError == true) {
-    	var url = "MemberServlet?command=member_login&id="+id.value;
-    	window.open(url,"login","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
-    }
+    return firstError;
 }
 
 // login new window
 function loginCheck() {
 	var url = ".";
 	window.open(url,"login","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+// pwcheck new window
+function pwCheck() {
+	var url = ".";
+	window.open(url,"confirmPW","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
 //find id button
@@ -602,22 +603,7 @@ function checkPwConfirm(){
             firstError = false;
         }
     }
-    //check if password is valid
-    var pwList = ["adminpassword","userpassword"]
-    var loginConfirm=false;
-    if(pwList.includes(password.value)){
-        //if(idList.indexOf(id.value)==pwList.indexOf(password.value)){
-            loginConfirm=true;
-        //};
-    };
-
-    //confirm
-    if (firstError == true && loginConfirm) {
-        window.location.href = "../MYP/editInfo.jsp";
-    }
-    else if(firstError == true){
-        alert("비밀번호가 일치하지 않습니다.");
-    }
+    return firstError;
 }
 
 

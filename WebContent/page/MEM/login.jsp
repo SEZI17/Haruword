@@ -18,7 +18,7 @@
 
 <p><a href="#" style="color:darkblue" class="redirectModal" id="forgotIDBtn2">아이디 찾기</a> · <a href="#"
         style="color:darkblue" class="redirectModal" id="forgotPWBtn2">비밀번호 찾기</a></p>
-<button class="modal_confirmBtn" onclick="return loginConfirm()" type="submit">로그인</button>
+<button class="modal_confirmBtn" onclick="return loginConfirm();" type="submit">로그인</button>
 </form>
 <br>
 <hr><br>

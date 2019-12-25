@@ -4,11 +4,13 @@ import com.haruword.controller.action.Action;
 import com.haruword.controller.action.MemberAddAction;
 import com.haruword.controller.action.MemberCheckidAction;
 import com.haruword.controller.action.MemberChecknicknameAction;
+import com.haruword.controller.action.MemberCheckpwAction;
 import com.haruword.controller.action.MemberFindidAction;
 import com.haruword.controller.action.MemberFindpwAction;
 import com.haruword.controller.action.MemberLoginAction;
 import com.haruword.controller.action.MemberLoginChkAction;
 import com.haruword.controller.action.MemberLogoutAction;
+import com.haruword.controller.action.MemberModifyAction;
 
 public class ActionEngine {
 
@@ -40,8 +42,12 @@ public class ActionEngine {
 			action = new MemberCheckidAction();
 		} else if(command.equals("member_checkNN")) {
 			action = new MemberChecknicknameAction();
+		} else if(command.equals("member_checkPW")) {
+			action = new MemberCheckpwAction();
 		} else if(command.equals("member_logout")) {
 			action = new MemberLogoutAction();
+		} else if(command.equals("member_modify")) {
+			action = new MemberModifyAction();
 		}
 		
 		return action;

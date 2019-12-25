@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,11 +64,19 @@
     </div>
     <!-- //Contents Here -->
     <!-- modal -->
-    <div id="modal" class="modal">
-    	<div class="modal-content" id="popup_content">
-        <jsp:include page="../MEM/checkPW.jsp" />
-        </div>
-    </div>
+    <c:choose>
+            	<c:when test="${loginUser.userid!=null}">
+		            <div id="modal" class="modal">
+				    	<div class="modal-content" id="popup_content">
+				        <jsp:include page="../MEM/checkPW.jsp" />
+				        </div>
+				    </div>	
+            	</c:when>
+            	<c:otherwise>
+            		<c:redirect url="../errorPage.jsp"></c:redirect>
+            	</c:otherwise>
+    </c:choose> 
+    
     <!-- //Contents Here -->
     <!-- haru footer -->
     <jsp:include page="../haru_footer.jsp" />

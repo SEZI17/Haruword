@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,15 +57,7 @@
     </style>
     <script>
         $("document").ready(function () {
-
-                $("#nameInput").attr("value", "관리자");
-
-                $("#idInput").attr("value", "admin");
-
-                $("#nicknameInput").attr("value", "admin123");
                 $("#nicknameInput").attr('disabled','disabled');
-
-                $("#emailInput").attr("value", "admin@email.com");
                 $("#emailInput").attr('disabled','disabled');
 
                 $("#nicknameEditBtn").click(function () {
@@ -105,46 +98,52 @@
                 </div>
             </header>
             <!-- SubContents Here -->
-            <div id="editInfo">
-                <div>
-                    <div id="name">
-                        <span>이름</span>
-                        <input type="text" placeholder="이름" class="MEM_inputBox" onkeydown="clearError(this.id)"
-                            id="nameInput" disabled>
-                        <!-- <button class="MEM_btn">수정</button> -->
-                        <p id="nameInputError"></p>
-                    </div>
-                    <div id="id">
-                        <span>아이디</span>
-                        <input type="text" placeholder="아이디" class="MEM_inputBox" onkeydown="clearError(this.id)"
-                            id="idInput" disabled>
-                        <!-- <button class="MEM_btn">수정</button> -->
-                        <p id="idInputError"></p>
-                    </div>
-                    <div id="nickname">
-                        <span>별명</span>
-                        <input type="text" placeholder="별명" class="MEM_inputBox" onkeydown="clearError(this.id)"
-                            id="nicknameInput">
-                        <button class="MEM_btn" id="nicknameEditBtn">수정</button>
-                        <p id="nicknameInputError"></p>
-                    </div>
-                    <div id="email">
-                        <span>이메일</span>
-                        <input type="email" placeholder="이메일 주소" class="MEM_inputBox" onkeydown="clearError(this.id)"
-                            id="emailInput">
-                        <button class="MEM_btn" id="emailEditBtn">수정</button>
-                        <p id="emailInputError"></p>
-                    </div>
-                    <div id="password">
-                        <span>비밀번호</span>
-                        <button class="MEM_btn openModal" id="changePWBtn0">비밀번호 변경 페이지로 이동</button>
-                    </div>
-                </div>
-                <!-- bottom button -->
-                <a href="/index.jsp"><button class="MEM_cancelBtn">취소</button></a> 
-                <button class="MEM_confirmBtn" onclick="editInfoConfirm()">변경내용 저장</button>
-                <br><br>
-            </div>
+            <c:choose>
+            	<c:when test="${loginUser.userid!=null}">
+		            <div id="editInfo">
+		                <div>
+		                    <div id="name">
+		                        <span>이름</span>
+		                        <input type="text" placeholder="이름" class="MEM_inputBox" onkeydown="clearError(this.id)"
+		                            id="nameInput" disabled value="${loginUser.name}">
+		                        <p id="nameInputError"></p>
+		                    </div>
+		                    <div id="id">
+		                        <span>아이디</span>
+		                        <input type="text" name="userId" placeholder="아이디" class="MEM_inputBox" onkeydown="clearError(this.id)"
+		                            id="idInput" disabled value="${loginUser.userid}">
+		                        <p id="idInputError"></p>
+		                    </div>
+		                    <div id="nickname">
+		                        <span>별명</span>
+		                        <input type="text" name="nickname" placeholder="별명" class="MEM_inputBox" onkeydown="clearError(this.id)"
+		                            id="nicknameInput" value="${loginUser.nickname}" onfocusout="nickExist()">
+		                        <input type="hidden" name="checkedNickname" id="chkNick">
+		                        <button class="MEM_btn" id="nicknameEditBtn">수정</button>
+		                        <p id="nicknameInputError"></p>
+		                    </div>
+		                    <div id="email">
+		                        <span>이메일</span>
+		                        <input type="email" name="email" placeholder="이메일 주소" class="MEM_inputBox" onkeydown="clearError(this.id)"
+		                            id="emailInput" value="${loginUser.email}">
+		                        <button class="MEM_btn" id="emailEditBtn">수정</button>
+		                        <p id="emailInputError"></p>
+		                    </div>
+		                    <div id="password">
+		                        <span>비밀번호</span>
+		                        <button class="MEM_btn openModal" id="changePWBtn0">비밀번호 변경 페이지로 이동</button>
+		                    </div>
+		                </div>
+		                <!-- bottom button -->
+		                <a href="/index.jsp"><button class="MEM_cancelBtn">취소</button></a> 
+		                <button class="MEM_confirmBtn" onclick="editInfoConfirm()">변경내용 저장</button>
+		                <br><br>
+		            </div>	
+            	</c:when>
+            	<c:otherwise>
+            		<c:redirect url="../errorPage.jsp"></c:redirect>
+            	</c:otherwise>
+            </c:choose>
             <!-- //SubContents Here -->
         </section>
     </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,32 +48,39 @@
                 </div>
             </header>
             <!-- SubContents Here -->
-            <article id="MYP_MYN_List">
-                <div id="MYP_MYN_table_wrap">
-                    <div id="MYN_table_control">
-                        <input id="all_check" type="checkbox" name="all" onclick="checkallWord()">
-                        <section>
-                            <label class="all_check_label" for="all_check">전체선택</label>
-                        </section> 
-                        <section class="delete_list" onclick="deleteWord()">선택한 항목 삭제</section>
-                    </div>
-                    <table id="MYP_MYN_table">
-                        <thead>
-                            <tr>
-                                <th class="table_form">품사</th>                                
-                                <th class="table_kanji">한자</th>
-                                <th class="table_yomigana">요미가나</th>
-                                <th class="table_korean">뜻</th>
-                                <th class="table_time">체크한 날짜</th>
-                                <th class="table_delete">삭제</th>
-                            </tr>
-                        </thead>
-                        <tbody id="MYP_MYN_notelist">
-                        </tbody>
-                    </table>
-                    <div id="list_none">표시할 단어가 없습니다.</div>                 
-                </div>
-            </article>
+            <c:choose>
+            	<c:when test="${loginUser.userid!=null}">
+		            <article id="MYP_MYN_List">
+		                <div id="MYP_MYN_table_wrap">
+		                    <div id="MYN_table_control">
+		                        <input id="all_check" type="checkbox" name="all" onclick="checkallWord()">
+		                        <section>
+		                            <label class="all_check_label" for="all_check">전체선택</label>
+		                        </section> 
+		                        <section class="delete_list" onclick="deleteWord()">선택한 항목 삭제</section>
+		                    </div>
+		                    <table id="MYP_MYN_table">
+		                        <thead>
+		                            <tr>
+		                                <th class="table_form">품사</th>                                
+		                                <th class="table_kanji">한자</th>
+		                                <th class="table_yomigana">요미가나</th>
+		                                <th class="table_korean">뜻</th>
+		                                <th class="table_time">체크한 날짜</th>
+		                                <th class="table_delete">삭제</th>
+		                            </tr>
+		                        </thead>
+		                        <tbody id="MYP_MYN_notelist">
+		                        </tbody>
+		                    </table>
+		                    <div id="list_none">표시할 단어가 없습니다.</div>                 
+		                </div>
+            		</article>	
+            	</c:when>
+            	<c:otherwise>
+            		<c:redirect url="../errorPage.jsp"></c:redirect>
+            	</c:otherwise>
+            </c:choose>  
             <!-- //SubContents Here -->
         </section>
     </div>

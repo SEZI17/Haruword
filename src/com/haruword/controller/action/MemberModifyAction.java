@@ -10,21 +10,28 @@ import javax.servlet.http.HttpSession;
 import com.haruword.dao.MemberDAO;
 import com.haruword.dto.MemberVO;
 
-public class MemberLoginChkAction implements Action {
+public class MemberModifyAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String userId = request.getParameter("userId");
-		String result = request.getParameter("result");
-		String url = "index.jsp";
-		MemberDAO memberDAO = MemberDAO.getInstance();	
-		MemberVO member = memberDAO.selectOneMemberById(userId);
-		request.setAttribute("member", member);
+		String nickname = request.getParameter("nickname");
+		String email = request.getParameter("email");
 		HttpSession session = request.getSession();
-		session.setAttribute("userId",userId);
+		String userid = session.getAttribute("userId").toString();
+		System.out.println(userid);
+		MemberVO member = new MemberVO();
+		member.setUserid(userid);
+		member.setNickname(nickname);
+		member.setEmail(email);
+		
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		memberDAO.updateMember(member);
+		
+		String url = "index.jsp";
+		member = memberDAO.selectOneMemberById(userid);
+		request.setAttribute("member", member);
 		session.setAttribute("loginUser",member);
-		session.setAttribute("result",result);
 		response.sendRedirect(url);
 	}
 

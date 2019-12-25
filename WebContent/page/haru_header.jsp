@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="/Haruword/page/errorPage.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- haru header -->
     <header>
@@ -23,7 +23,7 @@
                 <!-- //GNB -->
                 <!-- Signinupbutton -->
                 <c:choose>
-                	<c:when test="${result==true}">	                
+                	<c:when test="${loginUser.userid!=null}">	                
 	           			<div id="haru_MEM">${loginUser.name}(${loginUser.nickname})</div>
 	                </c:when>
 	                <c:otherwise>
@@ -64,7 +64,7 @@
     </div>
     <div id="haru_MYP_dropdown" class="haru_pc dropdown">
     	<c:choose>
-                <c:when test="${result==true}">	                
+                <c:when test="${loginUser.userid!=null}">	                
 	           		<ul class="dropMYP">
             			<li><a href="../MYP/wrongAnswerNotes.jsp" class="wan">오답노트</a></li>
             			<li><a href="../MYP/mynote.jsp">내 단어장</a></li>
@@ -95,7 +95,7 @@
             <p class="menu_description_contents">제작자 및 관리자를 소개합니다.</p>
         </div>
     </div>
-    <c:if test="${result==true}">
+    <c:if test="${loginUser.userid!=null}">
     <div id="haru_MEM_wrap">                
 	<div id="haru_MEM_dropdown" class="haru_pc dropdown2">
         <ul class="dropMEM">
@@ -116,7 +116,7 @@
             </div>
         <!-- <div id="haru_sidemenu_list"> -->
             <c:choose>
-                <c:when test="${result==true}">	                
+                <c:when test="${loginUser.userid!=null}">	                
 		           	<div id="haru_signup_mobile">
 		                <ul class="signup_wrap">
 		                    <li class="sign"><a class="memint" href="#">안녕하세요.<br>${loginUser.name}(${loginUser.nickname})님.</a></li>
@@ -147,7 +147,7 @@
                 <li><a href="../COM/stats.jsp" class="sidelist_list">단어통계</a></li>
             </ul>
             <c:choose>
-                <c:when test="${result==true}">	                
+                <c:when test="${loginUser.userid!=null}">	                
 	           		<ul class="sideMYP">
                 		<li><a href="#" class="sidelist_subject">My 페이지</a></li>
                 		<li><a href="../MYP/wrongAnswerNotes.jsp" class="sidelist_list">오답노트</a></li>
@@ -170,7 +170,7 @@
                 <li><a href="../INF/aboutus.jsp" class="sidelist_list">소개</a></li>
                 <li><a href="../INF/FAQ.jsp" class="sidelist_list">FAQ</a></li>
             </ul>
-            <c:if test="${result==true}">
+            <c:if test="${loginUser.userid!=null}">
             <ul class="sideMEM">
                 <li><a href="#" class="sidelist_subject">접속ID : ${loginUser.userid}</a></li>
                 <li><a href="/Haruword/MemberServlet?command=member_logout" class="sidelist_list">로그아웃</a></li>
