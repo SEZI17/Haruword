@@ -70,7 +70,7 @@
             <c:choose>
             	<c:when test="${loginUser.userid!=null}">
 		            <div id="deleteAccount">
-		                <p>* 지금까지 <b>하루, 단어</b>를 이용해주셔서 감사합니다.<br>* 보다 나은 사이트를 향해 발전하겠습니다.</p><br><br>
+		                <p>* 지금까지 <b>하루, 단어</b>를 이용해주셔서 감사합니다.<br>* 보다 나은 사이트를 향해 발전하겠습니다.<br>* 탈퇴하시려면 <b>현재 비밀번호</b>를 입력해주세요.</p><br><br>
 		                <div id="MEM_password">
 		                    <span>비밀번호</span>
 		                    <input type="password" placeholder="비밀번호" class="MEM_inputBox" onkeydown="clearError(this.id)" id="passwordInput">

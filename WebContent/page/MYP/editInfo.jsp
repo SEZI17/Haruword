@@ -135,7 +135,7 @@
 		                    </div>
 		                </div>
 		                <!-- bottom button -->
-		                <a href="/index.jsp"><button class="MEM_cancelBtn">취소</button></a> 
+		                <a href="/Haruword/index.jsp"><button class="MEM_cancelBtn">취소</button></a> 
 		                <button class="MEM_confirmBtn" onclick="editInfoConfirm()">변경내용 저장</button>
 		                <br><br>
 		            </div>	

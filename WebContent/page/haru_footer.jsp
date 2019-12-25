@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- haru footer -->
     <footer>
         <div id="haru_footer_wrap">
@@ -10,7 +11,7 @@
                     <li class="haru_pc"><a href="/page/INF/FAQ.jsp">FAQ</a></li>
                     <li><a href="/Haruword/page/MYP/privacyPolicy.jsp" class="laws">개인정보처리방침</a></li>
                     <li class="sign"><a href="#" class="openModal" id="forgotIDBtn2" style="display:none">ID/PW 찾기</a></li>
-                    <li><a href="/Haruword/page/MYP/deleteAccount.jsp">회원탈퇴</a></li>
+                    <c:if test="${loginUser.userid!=null}"><li><a href="/Haruword/page/MYP/deleteAccount.jsp">회원탈퇴</a></li></c:if>
                 </ul>
             </nav>
             <!-- //FNB -->

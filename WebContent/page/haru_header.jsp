@@ -73,10 +73,9 @@
 	            </c:when>
 	            <c:otherwise>
 		           	<ul class="dropMYP">
-                		<li><a href="#" class="openModal" id="loginBtn0">My 페이지</a></li>
-                		<li><a href="#" class="openModal" id="loginBtn0">오답노트</a></li>
-                		<li><a href="#" class="openModal" id="loginBtn0">내 단어장</a></li>
-                		<li><a href="#" class="openModal" id="loginBtn0">회원정보변경</a></li>
+                		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">오답노트</a></li>
+                		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">내 단어장</a></li>
+                		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">회원정보변경</a></li>
             		</ul>
 	            </c:otherwise>
 	    </c:choose>        
@@ -157,10 +156,10 @@
 	            </c:when>
 	            <c:otherwise>
 		           	<ul class="sideMYP">
-                		<li><a href="#" class="openModal sidelist_subject" id="loginBtn0">My 페이지</a></li>
-                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0">오답노트</a></li>
-                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0">내 단어장</a></li>
-                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0">회원정보변경</a></li>
+                		<li><a href="#" class="sidelist_subject">My 페이지</a></li>
+                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">오답노트</a></li>
+                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">내 단어장</a></li>
+                		<li><a href="#" class="openModal sidelist_list" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">회원정보변경</a></li>
             		</ul>
 	            </c:otherwise>
 	        </c:choose>

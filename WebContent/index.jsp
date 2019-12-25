@@ -94,7 +94,6 @@
 	            </c:when>
 	            <c:otherwise>
 		           	<ul class="dropMYP">
-                		<li><a href="#" class="openModal" id="loginBtn0">My 페이지</a></li>
                 		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">오답노트</a></li>
                 		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">내 단어장</a></li>
                 		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">회원정보변경</a></li>
@@ -180,7 +179,7 @@
 	            </c:when>
 	            <c:otherwise>
 		           	<ul class="sideMYP">
-                		<li><a href="#" class="openModal sidelist_subject" id="loginBtn0">My 페이지</a></li>
+                		<li><a href="#" class="sidelist_subject">My 페이지</a></li>
                 		<li><a href="#" class="openModal sidelist_list" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">오답노트</a></li>
                 		<li><a href="#" class="openModal sidelist_list" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">내 단어장</a></li>
                 		<li><a href="#" class="openModal sidelist_list" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">회원정보변경</a></li>
@@ -307,14 +306,28 @@
                             <li><a href="./page/COM/stats.jsp">단어통계</a></li>
                         </ul>
                     </div>
-                    <div id="smap3" class="smap_section">
-                        <ul>
-                            <li class="smap_hd">My 페이지</li>
-                            <li><a href="./page/MYP/wrongAnswerNotes.jsp">오답노트</a></li>
-                            <li><a href="./page/MYP/mynote.jsp">내 단어장</a></li>
-                            <li><a href="./page/MYP/editInfo_checkPW.jsp">회원정보변경</a></li>
-                        </ul>
-                    </div>
+                    <c:choose>
+		                <c:when test="${loginUser.userid!=null}">	                
+			           		<div id="smap3" class="smap_section">
+		                        <ul>
+		                            <li class="smap_hd">My 페이지</li>
+		                            <li><a href="./page/MYP/wrongAnswerNotes.jsp">오답노트</a></li>
+		                            <li><a href="./page/MYP/mynote.jsp">내 단어장</a></li>
+		                            <li><a href="./page/MYP/editInfo_checkPW.jsp">회원정보변경</a></li>
+		                        </ul>
+		                    </div>
+			            </c:when>
+			            <c:otherwise>
+			            	<div id="smap3" class="smap_section">
+					           	<ul>
+			                		<li class="smap_hd">My 페이지</li>
+			                		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">오답노트</a></li>
+			                		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">내 단어장</a></li>
+			                		<li><a href="#" class="openModal" id="loginBtn0" onclick="alert('로그인이 필요한 서비스입니다.')">회원정보변경</a></li>
+			            		</ul>
+		            		</div>
+			            </c:otherwise>
+			    	</c:choose>
                     <div id="smap4" class="smap_section">
                         <ul>
                             <li class="smap_hd">하루, 단어<br> 정보</li>
@@ -337,7 +350,7 @@
                     <li class="haru_pc"><a href="/page/INF/FAQ.jsp">FAQ</a></li>
                     <li><a href="./page/MYP/privacyPolicy.jsp" class="laws">개인정보처리방침</a></li>
                     <li><a href="#" style="display:none">ID/PW 찾기</a></li>
-                    <li><a href="./page/MYP/deleteAccount.jsp">회원탈퇴</a></li>
+                    <c:if test="${loginUser.userid!=null}"><li><a href="/Haruword/page/MYP/deleteAccount.jsp">회원탈퇴</a></li></c:if>
                 </ul>
             </nav>
             <!-- //FNB -->
