@@ -68,7 +68,6 @@
                     $("#emailInput").removeAttr('disabled');
                 });
             });
-        
     </script>
 </head>
 
@@ -132,6 +131,14 @@
 		                    <div id="password">
 		                        <span>비밀번호</span>
 		                        <button class="MEM_btn openModal" id="changePWBtn0">비밀번호 변경 페이지로 이동</button>
+		                        <script>
+		                        $(".openModal").click(function(){
+		                            var idName=$(this).attr("id");
+		                            idName=idName.substring(0,idName.length-4);
+		                            $('#popup_content').load("../MEM/"+idName+".jsp");
+		                            modal.style.display = "block";
+		                        });
+		                        </script>
 		                    </div>
 		                </div>
 		                <!-- bottom button -->

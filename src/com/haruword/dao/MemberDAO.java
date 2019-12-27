@@ -162,6 +162,25 @@ public class MemberDAO {
 		} finally {
 			DBManager.close(conn, pstmt);
 		}
+	}
+
+	public void updatePWMember(MemberVO member) {
+		// TODO Auto-generated method stub
+String sql="update haru_member set pwd=? where userid=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);			
+			pstmt.setString(1, member.getUserid());
+			pstmt.setString(3, member.getPwd());
+			pstmt.executeUpdate();			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 	} 
 	
 }

@@ -3,7 +3,7 @@
 <span class="modal_close" onclick="closeModal()">&times;</span>
 <h1 id="modalHeader"> 비밀번호 변경</h1>
 <div id="modal_oldPassword">
-    <input type="password" placeholder="현재 비밀번호" class="modal_inputBox" onkeydown="clearError(this.id)" id="oldPasswordInput">
+    <input type="password" name="pwd" placeholder="현재 비밀번호" class="modal_inputBox" onkeydown="clearError(this.id)" id="oldPasswordInput" onfocusout="checkPwEditConfirm();">
     <p id="oldPasswordInputError"></p>
 </div>
 <br><div id="modal_newPassword">

@@ -606,6 +606,24 @@ function checkPwConfirm(){
     return firstError;
 }
 
+function checkPwEditConfirm(){
+    var firstError = true;
+    //check password
+    var password = document.getElementById("passwordInput");
+    var passwordError = document.getElementById("passwordInputError");
+    if (password.value.length == 0) {
+        if (firstError) {
+            password.focus();
+            firstError = false;
+        }
+    } else {
+    	var url = "/Haruword/MemberServlet?command=member_checkPW";
+    	window.open(url,"idcheck","toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+    	document.pwd.action = "/Haruword/MemberServlet?command=member_checkPW";
+    	document.pwd.submit();
+    }
+}
+
 
 //change password button
 function changePwConfirm(){
@@ -620,14 +638,6 @@ function changePwConfirm(){
             firstError = false;
         }
     }
-    //check if password is valid
-    var pwList = ["adminpassword","userpassword"]
-    var passwordConfirm=false;
-    if(pwList.includes(oldPassword.value)){
-        //if(idList.indexOf(id.value)==pwList.indexOf(password.value)){
-            passwordConfirm=true;
-        //};
-    };
     //new check password
     var newPassword = document.getElementById("newPasswordInput");
     var newPasswordError = document.getElementById("newPasswordInputError");
@@ -674,11 +684,9 @@ function changePwConfirm(){
     //confirm
     if (firstError == true && passwordConfirm) {
         alert("비밀번호 변경이 완료되었습니다.");
-        window.location.href = "/Haruword/page/MYP/editInfo.jsp";
+        modal.style.display = "block";
     }
-    else if(firstError == true){
-        alert("현재 비밀번호가 일치하지 않습니다.");
-    }
+    return firstError;
 }
 
 //delete account button

@@ -11,6 +11,7 @@ import com.haruword.controller.action.MemberLoginAction;
 import com.haruword.controller.action.MemberLoginChkAction;
 import com.haruword.controller.action.MemberLogoutAction;
 import com.haruword.controller.action.MemberModifyAction;
+import com.haruword.controller.action.MemberModifypwAction;
 
 public class ActionEngine {
 
@@ -48,6 +49,8 @@ public class ActionEngine {
 			action = new MemberLogoutAction();
 		} else if(command.equals("member_modify")) {
 			action = new MemberModifyAction();
+		} else if(command.equals("member_modifyPW")) {
+			action = new MemberModifypwAction();
 		}
 		
 		return action;
